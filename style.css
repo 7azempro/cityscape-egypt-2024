@@ -1,0 +1,643 @@
+/* Color Variables */
+:root {
+    --primary-color: #f39426; /* Orange */
+    --secondary-color: #70cccc; /* Teal */
+    --font-family: 'Cairo', sans-serif; /* Google Cairo Font */
+}
+
+/* Global Styles */
+header {
+    position: fixed;
+    background-color: #38383869;
+    backdrop-filter: blur(40px);
+    padding: 15px 0;
+    filter: drop-shadow(0px 10px 10px #3333333f);
+    width: 100%;
+    top: 0;
+    border: 1px;
+    border-color: #DDDDDD;
+}
+
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: #F7F7F7; /* Light grey background */
+    margin: 0;
+    padding: 0;
+    color: #333333; /* Dark text for readability */
+}
+
+
+.logo img {
+    height: 64px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color); /* Primary color */
+}
+
+/* Hamburger Menu (Hidden on Larger Screens) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    background-color: var(--primary-color);
+    width: 30px;
+    height: 3px;
+    margin: 4px;
+    transition: all 0.3s ease;
+    border: #333333;
+    border-width: 1px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nav-links {
+        backdrop-filter: blur(40px);
+        position: absolute;
+        top: 80px;
+        right: 0;
+        background-color: #8b8b8b83;
+        width: 100%;
+        height: 100vh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .nav-links.active {
+        transform: translateX(0);
+    }
+
+    .nav-links li {
+        margin: 20px 0;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}
+
+/* Hamburger Animation (for open/close effect) */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('src/hero-background.jpg') no-repeat center center/cover;
+    color: #ffffff;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero-content h1 {
+    font-size: 48px;
+    margin: 0 0 20px;
+}
+
+.hero-content p {
+    font-size: 20px;
+    margin: 0 0 30px;
+}
+
+.cta-btn {
+    background-color: var(--secondary-color);
+    color: #ffffff;
+    padding: 15px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+.cta-btn:hover {
+    background-color: darken(var(--secondary-color), 10%);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+}
+.register-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('src/hero-background.jpg') no-repeat center center/cover;
+}
+
+.register-section p {
+    color: #ffffff;
+}
+
+.register-form {
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.register-form label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.register-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    box-sizing: border-box; /* Ensures padding and border are included in the total width */
+}
+
+.submit-btn {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box; /* Ensures padding and border are included in the total width */
+}
+
+.submit-btn:hover {
+    background-color: darken(var(--primary-color), 10%);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .register-form {
+        padding: 15px;
+    }
+
+    .register-form input,
+    .submit-btn {
+        padding: 12px;
+    }
+
+    .register-form label {
+        font-size: 14px;
+    }
+
+    .submit-btn {
+        font-size: 16px;
+    }
+}
+.slide-in {
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.slide-in.visible {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* About Section */
+.about-section {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.about-section h2 {
+    font-size: 36px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.stats {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.stat-item {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stat-item h3 {
+    font-size: 32px;
+    color: var(--secondary-color);
+    margin: 0 0 10px;
+}
+
+.stat-item p {
+    font-size: 16px;
+    margin: 0;
+}
+
+/* Exhibitors Section */
+.exhibitors-section {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 50px 20px;
+    background-color: #ffffff;
+}
+
+.exhibitors-section h2 {
+    font-size: 36px;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.exhibitor-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.exhibitor-card {
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    width: 250px;
+}
+
+.exhibitor-card img {
+    max-width: 194px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.exhibitor-card h3 {
+    font-size: 18px;
+    color: var(--primary-color);
+    margin-top: 10px;
+}
+
+/* Schedule Section */
+.schedule-section {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+}
+
+.schedule-section h2 {
+    font-size: 36px;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.schedule-list {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.schedule-list li {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Registration Section */
+.register-section {
+    padding: 50px 20px;
+}
+
+.register-section h2 {
+    font-size: 36px;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.register-section p {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.register-form {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.register-form label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+/* Button Styles */
+.submit-btn, .cta-btn {
+    background-color: var(--primary-color); /* Primary color */
+    color: #ffffff;
+    font-family: 'Cairo';
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none; /* Remove underline for links */
+    display: inline-block; /* Ensure it aligns properly with text */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+/* Hover Effect */
+.submit-btn:hover, .cta-btn:hover {
+    background-color: var(--secondary-color); /* Teal color */
+}
+
+/* Specific styles for .cta-btn */
+.cta-btn {
+    margin-top: 20px; /* Optional: Add margin to separate from other content */
+}
+
+.register-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.submit-btn {
+    background-color: var(--primary-color); /* Primary color */
+    color: #ffffff;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box; /* Ensures padding and border are included in the total width */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+/* Hover Effect */
+.submit-btn:hover {
+    background-color: var(--secondary-color); /* Teal color */
+}
+
+/* Footer Section */
+footer {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.social-media {
+    margin-top: 10px;
+}
+
+.social-media a {
+    color: black;
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.social-media img {
+    height: 24px;
+    width: 24px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 36px;
+    }
+
+    .hero-content p {
+        font-size: 18px;
+    }
+
+    .register-form {
+        padding: 15px;
+    }
+
+    .submit-btn {
+        padding: 12px 20px;
+    }
+}
+
+
+/* Benefits Section */
+.benefits-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #f4f4f4;
+}
+
+.benefits-section h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.benefit-item {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: left;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.benefit-item img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.benefit-item p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.benefit-item strong {
+    font-weight: bold;
+}
+
+.cta-btn {
+    background-color: var(--primary-color); /* Primary button color */
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.cta-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.sponsors-section {
+    text-align: center;
+    padding: 40px 0;
+    background-color: #f7f7f7;
+}
+
+.sponsors-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.patronage {
+    margin-bottom: 30px;
+}
+
+.patronage img {
+    max-width: 296px;
+}
+
+.patronage p {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.sponsor-category {
+    margin-bottom: 20px;
+}
+
+.sponsor-category h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.sponsor-category img {
+    max-width: 256px;
+    margin: 0 20px;
+}
+
+.gold-sponsors {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.gold-sponsors img {
+    max-width: 120px;
+}
+
+.cityscape-history {
+    padding: 60px 0;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.cityscape-history h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.cityscape-history p {
+    font-size: 18px;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+}
+
+.video-container iframe {
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px; /* For a custom, rounded video player */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* Add some shadow for effect */
+}
